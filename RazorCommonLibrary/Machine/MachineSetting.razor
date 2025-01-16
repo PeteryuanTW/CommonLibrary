@@ -66,12 +66,6 @@
                 <DxFormLayoutItem CaptionPosition="CaptionPosition.Vertical" Caption="@($"{localizer["Tag Category"]}")" ColSpanLg="6">
                     <DxComboBox Data="tagCategoriesWithFilter" @bind-Value="@taregtMachine.TagCategoryId" ValueFieldName="@nameof(TagCategory.Id)" TextFieldName="@nameof(TagCategory.Name)" />
                 </DxFormLayoutItem>
-                <DxFormLayoutItem CaptionPosition="CaptionPosition.Vertical" Caption="@($"{localizer["Custom Status Category"]}")" ColSpanLg="6">
-                    <DxComboBox Data="logicStatusCategories" @bind-Value="@taregtMachine.LogicStatusCategoryId" ValueFieldName="@nameof(LogicStatusCategory.Id)" TextFieldName="@nameof(LogicStatusCategory.Name)" />
-                </DxFormLayoutItem>
-                <DxFormLayoutItem CaptionPosition="CaptionPosition.Vertical" Caption="@($"{localizer["Error Code Category"]}")" ColSpanLg="6">
-                    <DxComboBox Data="errorCodeCategories" @bind-Value="@taregtMachine.ErrorCodeCategoryId" ValueFieldName="@nameof(ErrorCodeCategory.Id)" TextFieldName="@nameof(ErrorCodeCategory.Name)" />
-                </DxFormLayoutItem>
                 <DxFormLayoutItem CaptionPosition="CaptionPosition.Vertical" Caption="@($"{localizer["UpdateDelay"]}({localizer["ms"]})")" ColSpanLg="6" BeginRow="true">
                     <DxSpinEdit @bind-Value="@taregtMachine.UpdateDelay" MinValue="100" MaxValue="65535" />
                 </DxFormLayoutItem>
@@ -96,6 +90,7 @@
         </EditForm>
     </BodyContentTemplate>
 </DxPopup>
+
 @code {
     [Parameter]
     public EventCallback<RequestResult> ActionCallback { get; set; }
@@ -114,9 +109,6 @@
     private IEnumerable<TagCategory> tagCategories;
     private IEnumerable<TagCategory> tagCategoriesWithFilter => machineSelected ? tagCategories.Where(x => x.ConnectionType == taregtMachine.ConnectionType) : new List<TagCategory>();
 
-    private IEnumerable<LogicStatusCategory> logicStatusCategories;
-    private IEnumerable<ErrorCodeCategory> errorCodeCategories;
-
     protected override async Task OnInitializedAsync()
     {
         await InitParam();
@@ -126,8 +118,6 @@
     {
         machines = await machineService.GetAllMachinesConfig();
         tagCategories = await machineService.GetAllTagCategories();
-        logicStatusCategories = await machineService.GetCustomStatusAndConditions();
-        errorCodeCategories = await machineService.GetErrorCodeTables();
     }
 
     private void MachineSelected(GridFocusedRowChangedEventArgs args)
