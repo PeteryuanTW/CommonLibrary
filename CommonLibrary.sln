@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{7035D46E-8A1B-411C-BB98-C7DA3A2958E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{7035D46E-8A1B-411C-BB98-C7DA3A2958E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorCommonLibrary", "RazorCommonLibrary\RazorCommonLibrary.csproj", "{4F623283-FE9C-4BDE-9022-D400CE6900D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorCommonLibrary", "RazorCommonLibrary\RazorCommonLibrary.csproj", "{4F623283-FE9C-4BDE-9022-D400CE6900D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
